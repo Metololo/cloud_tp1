@@ -1,0 +1,22 @@
+services:
+  # A web service on the Ruby native runtime
+  - type: web
+    runtime: node
+    name: cloud_tp1_IaC
+    numInstances: 1
+    region: frankfurt # Default: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run start
+    autoDeploy: true # Disable automatic deploys
+    envVars: # Environment variables
+      - key: DATABASE_URL # Sets DATABASE_URL to the connection string of the django-app-db database
+        fromDatabase:
+          name: cloud_tp1_IaC_db
+          property: connectionString
+databases:
+  - name: cloud_tp1_IaC_db # Required
+    region: frankfurt # Default: oregon
+    plan: free # Default: basic-256mb
+    databaseName: cloud_tp1_IaC_db # Default: generated value based on name
+    user: app_user # Default: generated value based on name
