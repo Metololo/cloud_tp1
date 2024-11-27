@@ -18,5 +18,4 @@ databases:
   - name: cloud_tp1_IaC_db # Required
     region: frankfurt # Default: oregon
     plan: free # Default: basic-256mb
-    databaseName: cloud_tp1_IaC_db # Default: generated value based on name
     user: app_user # Default: generated value based on name
